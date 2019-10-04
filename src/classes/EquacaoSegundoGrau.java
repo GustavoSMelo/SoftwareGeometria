@@ -1,7 +1,7 @@
 
 package classes;
 
-public class EquacaoSegundoGrau extends Ponto implements Interface.EquacaoSegundoGrau {
+public class EquacaoSegundoGrau implements Interface.EquacaoSegundoGrau {
     int valorA, valorB, valorC;
 
     //Criando metodo construtor sem parâmetro
@@ -48,9 +48,6 @@ public class EquacaoSegundoGrau extends Ponto implements Interface.EquacaoSegund
         return (float) Math.pow(this.getValorB(), 2) - 4 * this.getValorA() * this.getValorC();
     }
     
-    
-
-
     @Override
     public float retornaCalcXum() {
         return (float)(double)(-(this.getValorB()) + Math.sqrt(this.retornaCalcbhaskara())) /(2*this.getValorA());
@@ -74,7 +71,4 @@ public class EquacaoSegundoGrau extends Ponto implements Interface.EquacaoSegund
                 "\n Valor do x'' = "+ this.retornaCalcXdois());
     }
     //fim
-    
-   
-    
 }
