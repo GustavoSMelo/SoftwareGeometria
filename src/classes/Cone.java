@@ -60,7 +60,7 @@ public final class Cone extends Ponto implements Interface.Cone {
     
     @Override
     public String toString(){
-        return ("Cone: [ Raio: "+this.getRaio()+
+        return ("Cone:  Raio: "+this.getRaio()+
                 "\nGeratriz: "+this.getGeratriz()+
                 "\nAltura: "+this.getAltura()+
                 "\nVolume: "+this.retornaVolume()+
