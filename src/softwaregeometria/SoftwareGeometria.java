@@ -3,6 +3,10 @@ package softwaregeometria;
 import classes.Ponto;
 import classes.Quadrado;
 import classes.Triangulo;
+import classes.Cone;
+import classes.Cilindro;
+import classes.Paralelepipedo;
+import classes.EquacaoSegundoGrau;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +16,10 @@ public class SoftwareGeometria {
         ArrayList<Ponto> objetos_pontos = new ArrayList();
         ArrayList<Quadrado> objetos_quadrado = new ArrayList();
         ArrayList<Triangulo> objetos_triangulo = new ArrayList();
-        
+        ArrayList<Cone> objetos_cone = new ArrayList();
+        ArrayList<Cilindro> objetos_cilindro = new ArrayList();
+        ArrayList<Paralelepipedo> objetos_paralepipedo = new ArrayList();
+        ArrayList<EquacaoSegundoGrau> objetos_equacaosegundograu = new ArrayList();
         System.out.println("========== Software Geometria ========== ");
         int option = 0;
                 
@@ -171,7 +178,7 @@ public class SoftwareGeometria {
                                 System.out.print("\nDigite a altura do triangulo: ");
                                 float altura = input.nextFloat();
                                 
-                                Triangulo t = new Triangulo();
+                                Triangulo t = new Triangulo(base, altura);
                                 objetos_triangulo.add(t);
                                 
                                 break;
@@ -219,7 +226,297 @@ public class SoftwareGeometria {
                     }
                 }
                 
+                case 4:{ //case 4
+                    int option_cone = 0;
+                    while(option_cone != 7 ){
+                        System.out.print("\n O que deseja fazer com a classe Cone ?\n"
+                                + "[1] Criar um novo Cone \n"
+                                + "[2] Visualizar o Volume \n"
+                                + "[3] Visualizar a  Area da base \n" 
+                                + "[4] Visualizar a Area Lateral \n" 
+                                + "[5] Visualizar a Area total \n"
+                                + "[6] Visualizar todas informações \n"
+                                + "[7] Sair \n"
+                                + "Opção: ");
+                        option_cone = input.nextInt();
+                        switch(option_cone){
+                            case 1:{
+                              System.out.print("\n Digite um valor para raio: ");
+                                float raio = input.nextFloat(); 
+                              System.out.print("\n Digite um valor para altura: ");
+                                float altura = input.nextFloat();
+                              System.out.print("\n Digite um valor para geratriz: ");
+                                float base = input.nextFloat();
+                              Cone con = new Cone(raio, altura, base);
+                                objetos_cone.add(con);
+                            break;
+                            }
+                            case 2:{
+                                System.out.print("\n O volume dos cones criados é: ");
+                                for(int i=0; i < objetos_cone.size(); i++ ){
+                                   System.out.println(objetos_cone.get(i).retornaVolume());
+                                   System.out.println("\n ---- \n ");
+                               }
+                            break;
+                            }
+                            case 3:{
+                                System.out.print("\n A area da base dos cones criados é de: ");
+                                for(int i=0; i< objetos_cone.size(); i++){
+                                    System.out.println(objetos_cone.get(i).retornaAreaBase());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 4:{
+                                System.out.print("\n A area lateral dos cones criados é de: ");
+                                for(int i=0; i < objetos_cone.size(); i++){
+                                    System.out.println(objetos_cone.get(i).retornaAreaLateral());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 5:{
+                                System.out.println("\n A area total dos cones criados é de: ");
+                                for(int i=0; i< objetos_cone.size(); i++){
+                                    System.out.println(objetos_cone.get(i).retornaAreaTotal());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 6:{
+                                System.out.println("\n Todos as informações dos cones criados são: ");
+                                for(int i=0; i< objetos_cone.size(); i++){
+                                    System.out.println(objetos_cone.get(i).toString());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 7:{
+                                try{
+                                    System.out.println("Voltando... ");
+                                    Thread.sleep(2500);
+                                }catch(Exception error){};
+                                break;
+                            }
+                    }
+                    }
+                }  // fim case 4
+                case 5:{ //case 5
+                    int option_cilindro = 0;
+                    while(option_cilindro != 7){
+                         System.out.print("\n O que deseja fazer com a classe Cilindro ?\n"
+                                + "[1] Criar um novo Cilindro \n"
+                                + "[2] Visualizar o Volume \n"
+                                + "[3] Visualizar a  Area da base \n" 
+                                + "[4] Visualizar a Area Lateral \n" 
+                                + "[5] Visualizar a Area total \n"
+                                + "[6] Visualizar todas informações \n"
+                                + "[7] Sair \n"
+                                + "Opção: ");
+                        option_cilindro = input.nextInt();
+                        switch(option_cilindro){
+                            case 1:{
+                                System.out.print("\n Digite o valor do raio: ");
+                                float raio = input.nextFloat();
+                                System.out.print("\n Digite o valor da altura: ");
+                                float altura = input.nextFloat();
+                                Cilindro cil = new Cilindro(raio, altura);
+                                 objetos_cilindro.add(cil);
+                            break; 
+                            }
+                            case 2:{
+                                System.out.println("\n O volume dos cilindros criados é: ");
+                                for(int i=0; i< objetos_cilindro.size(); i++){
+                                    System.out.println(objetos_cilindro.get(i).retornaVolume());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 3:{
+                                System.out.println("\n A area da base dos cilindros criados é: ");
+                                for(int i=0; i < objetos_cilindro.size(); i++){
+                                    System.out.println(objetos_cilindro.get(i).retornaAreaBase());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 4:{
+                                System.out.println("\n A area lateral dos cilindros criados é: ");
+                                for(int i=0; i < objetos_cilindro.size();i++){
+                                    System.out.println(objetos_cilindro.get(i).retornaAreaLateral());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;    
+                            }
+                            case 5:{
+                                System.out.println("\n A area Total dos cilindros criados é: ");
+                                for(int i=0; i < objetos_cilindro.size(); i++){
+                                    System.out.println(objetos_cilindro.get(i).retornaAreaTotal());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 6:{
+                                System.out.println("\n Todas as informações dos cilindros criados são: ");
+                                for (int i=0; i < objetos_cilindro.size(); i++){
+                                    System.out.println(objetos_cilindro.get(i).toString());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 7:{
+                                 try{
+                                    System.out.println("Voltando... ");
+                                    Thread.sleep(2500);
+                                }catch(Exception error){};
+                                break;
+                            }
+                            
+                        }       
+                    }
+                } // fim case 5
+                case 6:{ // case 6
+                    int option_paralelepipedo = 0;
+                    while(option_paralelepipedo != 5){
+                        System.out.print("\n O que deseja fazer com a classe Paralelepipedo ?\n"
+                                + "[1] Criar um novo paralelepipedo \n"
+                                + "[2] Visualizar o Volume \n"
+                                + "[3] Visualizar a Area total \n"
+                                + "[4] Visualizar todas informações \n"
+                                + "[5] Sair \n"
+                                + "Opção: ");
+                        option_paralelepipedo = input.nextInt();
+                        switch(option_paralelepipedo){
+                            case 1:{
+                                System.out.print("\n Digite um valor para o comprimento: ");
+                                float comprimento = input.nextFloat();
+                                System.out.print("\n Digite um valor para a largura: ");
+                                float largura = input.nextFloat();
+                                System.out.print("\n Digite um valor para a altura: ");
+                                float altura = input.nextFloat();
+                            Paralelepipedo parale = new Paralelepipedo(comprimento, largura, altura);
+                                objetos_paralepipedo.add(parale);
+                            break;
+                            }
+                            case 2:{
+                                System.out.println("\n Os volumes dos paralelepipedos criados é: ");
+                                for(int i=0; i < objetos_paralepipedo.size(); i++){
+                                    System.out.println(objetos_paralepipedo.get(i).retornaVolume());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 3:{
+                                System.out.println("\n As Áreas totais dos paralelepipedos criados é: ");
+                                for(int i=0; i < objetos_paralepipedo.size();i++){
+                                    System.out.println(objetos_paralepipedo.get(i).retornaAreaTotal());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 4:{
+                                System.out.println("\n Todas as informações dos paralelepipedos criados são: ");
+                                for(int i=0; i < objetos_paralepipedo.size(); i++){
+                                    System.out.println(objetos_paralepipedo.get(i).toString());
+                                }
+                            break;
+                            }
+                            case 5:{
+                                try{
+                                    System.out.println("Voltando... ");
+                                    Thread.sleep(2500);
+                                }catch(Exception error){};
+                                break;
+                            }
+                        }
+                    }
+                } // fim case6
+                case 7:{ //case 7
+                    int option_equacaosegundograu = 0;
+                    while(option_equacaosegundograu != 5){
+                        System.out.print("\n O que deseja fazer com a classe Equação segundo grau ?\n"
+                                + "[1] Criar uma nova Equação do segundo grau \n"
+                                + "[2] Visualizar a bhaskara \n"
+                                + "[3] Visualizar X um \n"
+                                + "[4] Visualizar X dois \n"
+                                + "[5] Visualizar Todas as informações: \n"
+                                + "[6] Sair \n"
+                                + "Opção: ");
+                        option_equacaosegundograu = input.nextInt();
+                        switch(option_equacaosegundograu){
+                            case 1:{
+                                System.out.print("\n Digite o valor de A: ");
+                                int valorA = input.nextInt();
+                                System.out.print("\n Digite o valor de B: ");
+                                int valorB = input.nextInt();
+                                System.out.print("\n Digite o valor de C: ");
+                                int valorC = input.nextInt();
+                            EquacaoSegundoGrau eqsegrau = new EquacaoSegundoGrau(valorA, valorB, valorC);
+                                objetos_equacaosegundograu.add(eqsegrau);
+                            break;
+                            }
+                            case 2:{
+                                System.out.println("\n Os deltas das equações de segundo grau criadas é: ");
+                                for(int i=0; i < objetos_equacaosegundograu.size(); i++){
+                                    System.out.println(objetos_equacaosegundograu.get(i).retornaCalcbhaskara());
+                                    System.out.println("\n ---- \n ");
+                                
+                                }
+                            break;
+                            }
+                            case 3:{
+                                System.out.println("\n Os X um das equações de segundo grau criadas é: ");
+                                for(int i=0; i < objetos_equacaosegundograu.size(); i++){
+                                    System.out.println(objetos_equacaosegundograu.get(i).retornaCalcXum());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 4:{
+                                System.out.println("\n Os X dois das equações de segundo grau criadas é: ");
+                                for(int i = 0; i < objetos_equacaosegundograu.size(); i++ ){
+                                System.out.println(objetos_equacaosegundograu.get(i).retornaCalcXdois());    
+                                }
+                            break;    
+                            }
+                            case 5:{
+                                System.out.println("\n Todas as informações das equações do segundo grau são: ");
+                                for(int i=0; i < objetos_equacaosegundograu.size(); i++){
+                                    System.out.println(objetos_equacaosegundograu.get(i).toString());
+                                    System.out.println("\n ---- \n ");
+                                }
+                            break;
+                            }
+                            case 6:{
+                                try{
+                                    System.out.println("Voltando... ");
+                                    Thread.sleep(2500);
+                                }catch(Exception error){};
+                                break;
+                            }
+                        }
+                    }
+                } // fim case 7
+                case 8:{
+                  
+                break;
+                }
+                case 9:{
+                    int voltar = 0;
+                     System.out.println("digite 0 para sair: ");
+                     voltar = input.nextInt();
+                    switch(voltar){
+                        case 0:{
+                            try{
+                        System.out.println("Você saiu... ");
+                        Thread.sleep(750);
+                        }catch(Exception error){};
+                        break;
+                        }
+                    }
+                }
             }//switch option
+            
         }//while
         
     }
