@@ -2,7 +2,7 @@ package classes;
 
 public final class Paralelepipedo extends Ponto implements Interface.Paralelepipedo{
     private float comprimento, altura, largura;
-    
+    private Ponto ponto;
     public Paralelepipedo(){};
     
     public Paralelepipedo(float comprimento, float altura, float largura){
@@ -34,6 +34,14 @@ public final class Paralelepipedo extends Ponto implements Interface.Paralelepip
     public void setLargura(float largura) {
         this.largura = largura;
     }
+
+    public Ponto getPonto() {
+        return ponto;
+    }
+
+    public void setPonto(Ponto ponto) {
+        this.ponto = ponto;
+    }
     
     @Override
     public float retornaAreaTotal(){
@@ -54,6 +62,7 @@ public final class Paralelepipedo extends Ponto implements Interface.Paralelepip
                 "\nAltura: "+ this.getLargura()+
                 "\nVolume: "+ this.retornaVolume()+
                 "\nArea total: "+this.retornaAreaTotal()+
+                "\nPosicionamento do paralelepipedo(ponto): "+this.getPonto() +
                 "\n ] ");
     }
 }

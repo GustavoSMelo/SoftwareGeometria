@@ -3,12 +3,16 @@ package classes;
 public final class Triangulo extends Ponto implements Interface.Triangulo{
     private float base;
     private float altura;
+    private float posX;
+    private float posY;
     
     public Triangulo(){};
     
-    public Triangulo(float base, float altura){
+    public Triangulo(float base, float altura, float posX, float posY){
         this.base = base;
         this.altura = altura;
+        this.posX = posX;
+        this.posY = posY;
     }
 
     public float getBase() {
@@ -26,7 +30,23 @@ public final class Triangulo extends Ponto implements Interface.Triangulo{
     public void setAltura(float altura) {
         this.altura = altura;
     }
-    
+
+    public float getPosX() {
+        return this.posX;
+    }
+
+    public void setPosX(float posX) {
+        this.posX = posX;
+    }
+
+    public float getPosY() {
+        return this.posY;
+    }
+
+    public void setPosY(float posY) {
+        this.posY = posY;
+    }
+
     
     @Override
     public float retornaAreaTotal(){
@@ -43,6 +63,8 @@ public final class Triangulo extends Ponto implements Interface.Triangulo{
         return ("Triangulo: [ base: "+ this.getBase() 
                 +" \nAltura: "+this.getAltura()
                 +"\n Area Total: "+this.retornaAreaTotal()+
-                "\nPerimetro: "+ this.retornaPerimetro());
+                "\nPerimetro: "+ this.retornaPerimetro()+
+                "\nPosição X(vindo do ponto): "+this.getPosX()+
+                "\nPosição Y(vindo do ponto): "+this.getPosY()+" ] ");
     }
 }

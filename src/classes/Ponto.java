@@ -1,8 +1,8 @@
 package classes;
 
 public class Ponto {
-    private float posicionamento_x;
-    private float posicionamento_y;
+    protected float posicionamento_x;
+    protected float posicionamento_y;
     
     public Ponto(){};
     

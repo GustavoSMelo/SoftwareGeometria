@@ -4,14 +4,16 @@ import java.math.BigInteger;
 
 public final class Cone extends Ponto implements Interface.Cone {
 
-    private float raio, altura, geratriz;
+    private float raio, altura, geratriz, posX, posY;
     
     public Cone(){};
     
-    public Cone(float raio, float altura, float geratriz){
+    public Cone(float raio, float altura, float geratriz, float posX, float posY){
         this.raio = raio;
         this.altura = altura;
         this.geratriz = geratriz;
+        this.posX = posX;
+        this.posY = posY;
     }
 
     public float getRaio() {
@@ -36,7 +38,25 @@ public final class Cone extends Ponto implements Interface.Cone {
 
     public void setGeratriz(float geratriz) {
         this.geratriz = geratriz;
+    } 
+
+    public float getPosX() {
+        return this.posX;
     }
+
+    public void setPosX(float posX) {
+        this.posX = posX;
+    }
+
+    public float getPosY() {
+        return this.posY;
+    }
+
+    public void setPosY(float posY) {
+        this.posY = posY;
+    }
+    
+    
     
     @Override
     public float retornaVolume() {
@@ -64,6 +84,8 @@ public final class Cone extends Ponto implements Interface.Cone {
                 "\nGeratriz: "+this.getGeratriz()+
                 "\nAltura: "+this.getAltura()+
                 "\nVolume: "+this.retornaVolume()+
-                "\nArea total:"+this.retornaAreaTotal());
+                "\nArea total:"+this.retornaAreaTotal()+
+                "\nPosicionamento X do cone(ponto): "+ this.getPosX()+
+                "\nPosicionamento Y do cone(ponto): "+ this.getPosY());
     }
 }

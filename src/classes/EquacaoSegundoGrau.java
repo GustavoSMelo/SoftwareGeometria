@@ -2,7 +2,7 @@
 package classes;
 
 public class EquacaoSegundoGrau implements Interface.EquacaoSegundoGrau {
-    int valorA, valorB, valorC;
+    private int valorA, valorB, valorC;
 
     //Criando metodo construtor sem parâmetro
     public EquacaoSegundoGrau() {
