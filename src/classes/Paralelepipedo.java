@@ -2,13 +2,15 @@ package classes;
 
 public final class Paralelepipedo extends Ponto implements Interface.Paralelepipedo{
     private float comprimento, altura, largura;
-    private Ponto ponto;
+    private float posX, posY;
     public Paralelepipedo(){};
     
-    public Paralelepipedo(float comprimento, float altura, float largura){
+    public Paralelepipedo(float comprimento, float altura, float largura, float posX, float posY){
         this.comprimento = comprimento;
         this.altura = altura;
         this.largura = largura;
+        this.posX = posX;
+        this.posY = posY;
     }
 
     public float getComprimento() {
@@ -31,17 +33,28 @@ public final class Paralelepipedo extends Ponto implements Interface.Paralelepip
         return this.largura;
     }
 
+    public float getPosX() {
+        return this.posX;
+    }
+
+    public void setPosX(float posX) {
+        this.posX = posX;
+    }
+
+    public float getPosY() {
+        return this.posY;
+    }
+
+    public void setPosY(float posY) {
+        this.posY = posY;
+    }
+    
+
     public void setLargura(float largura) {
         this.largura = largura;
     }
 
-    public Ponto getPonto() {
-        return ponto;
-    }
-
-    public void setPonto(Ponto ponto) {
-        this.ponto = ponto;
-    }
+    
     
     @Override
     public float retornaAreaTotal(){
@@ -58,11 +71,11 @@ public final class Paralelepipedo extends Ponto implements Interface.Paralelepip
     @Override
     public String toString(){
         return ("Paralelepipedo: [ Comprimento: "+ this.getComprimento()+
-                "\nLargura: " + this.getLargura() + 
-                "\nAltura: "+ this.getLargura()+
-                "\nVolume: "+ this.retornaVolume()+
-                "\nArea total: "+this.retornaAreaTotal()+
-                "\nPosicionamento do paralelepipedo(ponto): "+this.getPonto() +
-                "\n ] ");
+                "\nLargura: " + this.getLargura()+ "m²" + 
+                "\nAltura: "+ this.getLargura()+ "m²"+
+                "\nVolume: "+ this.retornaVolume()+ "m³"+
+                "\nArea total: "+this.retornaAreaTotal()+"m²"+
+              "\nPosição X do Paralelepipedo =  "+ this.getPosX()+
+                "\nPosição Y do Paralelepipedo = "+ this.getPosY()+" ] "); 
     }
 }
