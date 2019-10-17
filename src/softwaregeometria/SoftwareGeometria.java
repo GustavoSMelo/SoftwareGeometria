@@ -13,13 +13,11 @@ import java.util.Scanner;
 public class SoftwareGeometria {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        ArrayList<Ponto> objetos_pontos = new ArrayList();
-        ArrayList<Quadrado> objetos_quadrado = new ArrayList();
-        ArrayList<Triangulo> objetos_triangulo = new ArrayList();
-        ArrayList<Cone> objetos_cone = new ArrayList();
+        ArrayList array_de_objetos = new ArrayList();
         ArrayList<Cilindro> objetos_cilindro = new ArrayList();
         ArrayList<Paralelepipedo> objetos_paralepipedo = new ArrayList();
         ArrayList<EquacaoSegundoGrau> objetos_equacaosegundograu = new ArrayList();
+        Ponto p = null;
         System.out.println("========== Software Geometria ========== ");
         int option = 0;
                 
@@ -57,16 +55,16 @@ public class SoftwareGeometria {
                                 System.out.println("\nDigite a posição Y do ponto: ");
                                 float pos_y = input.nextFloat();
 
-                                Ponto p = new Ponto(pos_x, pos_y);
-                                objetos_pontos.add(p);
+                                array_de_objetos.add(p = new Ponto(pos_x, pos_y));
                                 break;
                             }//case 1
                             
                             
                             case 2:{
                                 System.out.println("\nInformações de todos os pontos criados: ");
-                                for(int i = 0; i < objetos_pontos.size(); i++){  
-                                    System.out.println(objetos_pontos.get(i).toString());
+                                for(int i = 0; i < array_de_objetos.size(); i++){
+                                    Ponto point = (Ponto)array_de_objetos.get(i);
+                                    System.out.println(point.toString());
                                     System.out.println("\n---\n");
                                 }
                                 
@@ -105,16 +103,19 @@ public class SoftwareGeometria {
                             case 1:{
                                 System.out.print("\nDigite tamanho do lado do quadrado: ");
                                 float lado = input.nextFloat();
-                                
-                                Quadrado quad = new Quadrado(lado);
-                                objetos_quadrado.add(quad);
+                                //array_de_objetos.clear();
+                                array_de_objetos.add(new Quadrado(lado, p.getPosicionamentoX(), p.getPosicionamentoY()));
                                 break;
                             }
                             
                             case 2:{
                                 System.out.println("\n O Perimetro dos quadrados criados foram: ");
-                                for(int i = 0; i < objetos_quadrado.size(); i++){     
-                                    System.out.println(objetos_quadrado.get(i).retornaPerimetroQuadrado());
+                                for(int i = 0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Quadrado){
+                                        Quadrado quad = (Quadrado)array_de_objetos.get(i);
+                                        System.out.println(quad.retornaPerimetroQuadrado());
+                                    }
+                                    //Ponto point = (Ponto)array_de_objetos.get(i);
                                     System.out.println("\n ---------\n");
                                 }
                                 
@@ -123,8 +124,12 @@ public class SoftwareGeometria {
                             
                             case 3: {
                                 System.out.println("\n A area total dos quadrados criados foram: ");
-                                for(int i = 0; i < objetos_quadrado.size(); i ++){
-                                    System.out.println(objetos_quadrado.get(i).retornaAreaQuadrado());
+                                for(int i = 0; i < array_de_objetos.size(); i ++){
+                                    if(array_de_objetos.get(i) instanceof Quadrado){
+                                        Quadrado area_quad = (Quadrado)array_de_objetos.get(i);
+                                        System.out.println(area_quad.retornaAreaQuadrado());
+                                    }
+                                    //System.out.println(objetos_quadrado.get(i).retornaAreaQuadrado())
                                 System.out.println("\n ---------\n");
                                 }
                                 break;
@@ -132,9 +137,12 @@ public class SoftwareGeometria {
                             
                             case 4:{
                                 System.out.println("Informações de todos os quadrados criados: ");  
-                                for(int i = 0; i < objetos_quadrado.size(); i ++){
-                                                                      
-                                    System.out.println(objetos_quadrado.get(i).toString());
+                                for(int i = 0; i < array_de_objetos.size(); i ++){
+                                    if(array_de_objetos.get(i) instanceof Quadrado){
+                                        Quadrado all_quad = (Quadrado)array_de_objetos.get(i);
+                                        System.out.println(all_quad.toString());
+                                    }
+                                    
                                     System.out.println("\n-----\n");
                                 }
                                 
@@ -178,16 +186,20 @@ public class SoftwareGeometria {
                                 System.out.print("\nDigite a altura do triangulo: ");
                                 float altura = input.nextFloat();
                                 
-                                Triangulo t = new Triangulo(base, altura);
-                                objetos_triangulo.add(t);
-                                
+                                array_de_objetos.add(new Triangulo(base,
+                                        altura,
+                                        p.getPosicionamentoX(),
+                                        p.getPosicionamentoY()));
                                 break;
                             }
                             
                             case 2:{
                                 System.out.println("Perimetro de todos os triangulos criados: \n");
-                                for(int i = 0; i < objetos_triangulo.size(); i++){
-                                    System.out.println(objetos_triangulo.get(i).retornaPerimetro());
+                                for(int i = 0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Triangulo){
+                                        Triangulo t = (Triangulo)array_de_objetos.get(i);
+                                        System.out.println(t.retornaPerimetro());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                                 
@@ -196,8 +208,11 @@ public class SoftwareGeometria {
                             
                             case 3: {
                                 System.out.println("Area total de todos os triangulos criados: \n");
-                                for(int i = 0; i < objetos_triangulo.size(); i++){
-                                    System.out.println(objetos_triangulo.get(i).retornaAreaTotal());
+                                for(int i = 0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Triangulo){
+                                        Triangulo t = (Triangulo)array_de_objetos.get(i);
+                                        System.out.println(t.retornaAreaTotal());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                                 
@@ -206,8 +221,11 @@ public class SoftwareGeometria {
                             
                             case 4:{
                                 System.out.println("todas as informações de todos os triangulos criados: \n");
-                                for(int i = 0; i < objetos_triangulo.size(); i++){
-                                    System.out.println(objetos_triangulo.get(i).toString());
+                                for(int i = 0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Triangulo){
+                                        Triangulo t = (Triangulo)array_de_objetos.get(i);
+                                        System.out.println(t.toString());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                                 
@@ -224,6 +242,7 @@ public class SoftwareGeometria {
                             }
                         }
                     }
+                    break;
                 }
                 
                 case 4:{ //case 4
@@ -247,46 +266,64 @@ public class SoftwareGeometria {
                                 float altura = input.nextFloat();
                               System.out.print("\n Digite um valor para geratriz: ");
                                 float base = input.nextFloat();
-                              Cone con = new Cone(raio, altura, base);
-                                objetos_cone.add(con);
+                                array_de_objetos.add(new Cone(raio,
+                                        altura,
+                                        base,
+                                        p.getPosicionamentoX(),
+                                        p.getPosicionamentoY()));
                             break;
                             }
                             case 2:{
                                 System.out.print("\n O volume dos cones criados é: ");
-                                for(int i=0; i < objetos_cone.size(); i++ ){
-                                   System.out.println(objetos_cone.get(i).retornaVolume());
+                                for(int i=0; i < array_de_objetos.size(); i++ ){
+                                    if(array_de_objetos.get(i) instanceof Cone){
+                                        Cone c = (Cone)array_de_objetos.get(i);
+                                        System.out.println(c.retornaVolume());
+                                    }                                   
                                    System.out.println("\n ---- \n ");
                                }
                             break;
                             }
                             case 3:{
                                 System.out.print("\n A area da base dos cones criados é de: ");
-                                for(int i=0; i< objetos_cone.size(); i++){
-                                    System.out.println(objetos_cone.get(i).retornaAreaBase());
+                                for(int i=0; i< array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Cone){
+                                        Cone c = (Cone)array_de_objetos.get(i);
+                                        System.out.println(c.retornaAreaBase());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                             break;
                             }
                             case 4:{
                                 System.out.print("\n A area lateral dos cones criados é de: ");
-                                for(int i=0; i < objetos_cone.size(); i++){
-                                    System.out.println(objetos_cone.get(i).retornaAreaLateral());
+                                for(int i=0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof  Cone){
+                                        Cone c = (Cone)array_de_objetos.get(i);
+                                        System.out.println(c.retornaAreaLateral());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                             break;
                             }
                             case 5:{
                                 System.out.println("\n A area total dos cones criados é de: ");
-                                for(int i=0; i< objetos_cone.size(); i++){
-                                    System.out.println(objetos_cone.get(i).retornaAreaTotal());
+                                for(int i=0; i< array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Cone){
+                                        Cone c = (Cone)array_de_objetos.get(i);
+                                        System.out.println(c.retornaAreaTotal());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
-                            break;
+                                break;
                             }
                             case 6:{
                                 System.out.println("\n Todos as informações dos cones criados são: ");
-                                for(int i=0; i< objetos_cone.size(); i++){
-                                    System.out.println(objetos_cone.get(i).toString());
+                                for(int i=0; i< array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Cone){
+                                        Cone c = (Cone)array_de_objetos.get(i);
+                                        System.out.println(c.toString());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                             break;
@@ -298,8 +335,9 @@ public class SoftwareGeometria {
                                 }catch(Exception error){};
                                 break;
                             }
+                        }
                     }
-                    }
+                    break;
                 }  // fim case 4
                 case 5:{ //case 5
                     int option_cilindro = 0;
@@ -498,8 +536,10 @@ public class SoftwareGeometria {
                     }
                 } // fim case 7
                 case 8:{
-                  
-                break;
+                    for(int i = 0; i < array_de_objetos.size(); i++){
+                        System.out.println(array_de_objetos.get(i)+"\n---------\n");
+                    }
+                    break;
                 }
                 case 9:{
                     int voltar = 0;
