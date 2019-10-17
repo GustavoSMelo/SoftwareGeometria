@@ -1,11 +1,8 @@
-
 package classes;
 
-
 public class Cilindro extends Ponto implements Interface.Cilindro {
-    float raio, altura;
-
-    
+    private float raio, altura;
+    private Ponto ponto;
     //metodo construtor sem parametro
     public Cilindro() {
     }
@@ -34,6 +31,16 @@ public class Cilindro extends Ponto implements Interface.Cilindro {
     public void setAltura(float altura) {
         this.altura = altura;
     }
+
+    public Ponto getPonto() {
+        return this.ponto;
+    }
+
+    public void setPonto(Ponto ponto) {
+        this.ponto = ponto;
+    }
+    
+    
     //fim da chamada
      //chamada da interface do cilindro     
     @Override
@@ -65,9 +72,8 @@ public class Cilindro extends Ponto implements Interface.Cilindro {
                 "\nArea da Base = " + this.retornaAreaBase()+ " cm²" + 
                 "\nArea Lateral = " + this.retornaAreaLateral()+ " cm²" +  
                 "\nArea Total = " + this.retornaAreaTotal() + " cm²" +
-                "\nVolume = " + this.retornaVolume()+ " cm³");
+                "\nVolume = " + this.retornaVolume()+ " cm³"+
+                "\nLocalização do cilindro = " +this.getPonto());
     }
     //fim
-    
-    
 }
