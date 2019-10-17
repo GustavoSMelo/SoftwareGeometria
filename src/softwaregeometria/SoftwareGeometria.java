@@ -358,46 +358,63 @@ public class SoftwareGeometria {
                                 float raio = input.nextFloat();
                                 System.out.print("\n Digite o valor da altura: ");
                                 float altura = input.nextFloat();
-                                Cilindro cil = new Cilindro(raio, altura);
-                                 objetos_cilindro.add(cil);
+                                array_de_objetos.add( new Cilindro(raio, altura, p.getPosicionamentoX(), p.getPosicionamentoY()));
                             break; 
                             }
                             case 2:{
                                 System.out.println("\n O volume dos cilindros criados é: ");
-                                for(int i=0; i< objetos_cilindro.size(); i++){
-                                    System.out.println(objetos_cilindro.get(i).retornaVolume());
+                                for(int i=0; i< array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Cilindro){
+                                        Cilindro cil_volume =(Cilindro)array_de_objetos.get(i);
+                                        System.out.println(cil_volume.retornaVolume());
+                                    }
+                                    
                                     System.out.println("\n ---- \n ");
                                 }
                             break;
                             }
                             case 3:{
                                 System.out.println("\n A area da base dos cilindros criados é: ");
-                                for(int i=0; i < objetos_cilindro.size(); i++){
-                                    System.out.println(objetos_cilindro.get(i).retornaAreaBase());
+                                for(int i=0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Cilindro){
+                                        Cilindro cil_base = (Cilindro)array_de_objetos.get(i);
+                                        System.out.println(cil_base.retornaAreaBase());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
+                                
                             break;
                             }
                             case 4:{
                                 System.out.println("\n A area lateral dos cilindros criados é: ");
-                                for(int i=0; i < objetos_cilindro.size();i++){
-                                    System.out.println(objetos_cilindro.get(i).retornaAreaLateral());
+                                for(int i=0; i < array_de_objetos.size();i++){
+                                    if(array_de_objetos.get(i) instanceof Cilindro){
+                                        Cilindro cil_late = (Cilindro)array_de_objetos.get(i);
+                                        System.out.println(cil_late.retornaAreaLateral());
+                                    }
+                                    
                                     System.out.println("\n ---- \n ");
                                 }
                             break;    
                             }
                             case 5:{
                                 System.out.println("\n A area Total dos cilindros criados é: ");
-                                for(int i=0; i < objetos_cilindro.size(); i++){
-                                    System.out.println(objetos_cilindro.get(i).retornaAreaTotal());
+                                for(int i=0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Cilindro){
+                                        Cilindro cil_tot = (Cilindro)array_de_objetos.get(i);
+                                        System.out.println(cil_tot.retornaAreaTotal());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                             break;
                             }
                             case 6:{
                                 System.out.println("\n Todas as informações dos cilindros criados são: ");
-                                for (int i=0; i < objetos_cilindro.size(); i++){
-                                    System.out.println(objetos_cilindro.get(i).toString());
+                                for (int i=0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Cilindro){
+                                        Cilindro ci = (Cilindro)array_de_objetos.get(i);
+                                        System.out.println(ci.toString());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                             break;
@@ -432,30 +449,38 @@ public class SoftwareGeometria {
                                 float largura = input.nextFloat();
                                 System.out.print("\n Digite um valor para a altura: ");
                                 float altura = input.nextFloat();
-                            Paralelepipedo parale = new Paralelepipedo(comprimento, largura, altura);
-                                objetos_paralepipedo.add(parale);
+                            array_de_objetos.add(new Paralelepipedo(comprimento, largura, altura, p.getPosicionamentoX(), p.getPosicionamentoY()));
                             break;
                             }
                             case 2:{
                                 System.out.println("\n Os volumes dos paralelepipedos criados é: ");
-                                for(int i=0; i < objetos_paralepipedo.size(); i++){
-                                    System.out.println(objetos_paralepipedo.get(i).retornaVolume());
+                                for(int i=0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Paralelepipedo){
+                                        Paralelepipedo para_vol = (Paralelepipedo)array_de_objetos.get(i);
+                                        System.out.println(para_vol.retornaVolume());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                             break;
                             }
                             case 3:{
                                 System.out.println("\n As Áreas totais dos paralelepipedos criados é: ");
-                                for(int i=0; i < objetos_paralepipedo.size();i++){
-                                    System.out.println(objetos_paralepipedo.get(i).retornaAreaTotal());
+                                for(int i=0; i < array_de_objetos.size();i++){
+                                    if(array_de_objetos.get(i) instanceof Paralelepipedo){
+                                        Paralelepipedo para_tot = (Paralelepipedo)array_de_objetos.get(i);
+                                        System.out.println(para_tot.retornaVolume());
+                                    }
                                     System.out.println("\n ---- \n ");
                                 }
                             break;
                             }
                             case 4:{
                                 System.out.println("\n Todas as informações dos paralelepipedos criados são: ");
-                                for(int i=0; i < objetos_paralepipedo.size(); i++){
-                                    System.out.println(objetos_paralepipedo.get(i).toString());
+                                for(int i=0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof Paralelepipedo){
+                                        Paralelepipedo parale = (Paralelepipedo)array_de_objetos.get(i);
+                                        System.out.println(parale.toString());
+                                    }
                                 }
                             break;
                             }
