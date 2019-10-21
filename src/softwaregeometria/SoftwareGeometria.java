@@ -7,6 +7,11 @@ import classes.Cone;
 import classes.Cilindro;
 import classes.Paralelepipedo;
 import classes.EquacaoSegundoGrau;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,10 +19,26 @@ public class SoftwareGeometria {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         ArrayList array_de_objetos = new ArrayList();
-        ArrayList<Cilindro> objetos_cilindro = new ArrayList();
-        ArrayList<Paralelepipedo> objetos_paralepipedo = new ArrayList();
-        ArrayList<EquacaoSegundoGrau> objetos_equacaosegundograu = new ArrayList();
         Ponto p = null;
+        
+        try{
+            FileInputStream fis = new FileInputStream("C:/temp/FigurasGeometricas.dat");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            array_de_objetos.clear();
+            
+            boolean sair = false;
+            do{
+                try {
+                    Object objeto = ois.readObject();
+                    array_de_objetos.add(objeto);
+                    
+                }catch (EOFException saida) { sair = true;}
+            }while(!sair);
+            
+            fis.close();
+            ois.close();
+        }catch(Exception e){System.out.println("Erro ao carregar objetos cadastrados..." + e.getMessage());}
+        
         System.out.println("========== Software Geometria ========== ");
         int option = 0;
                 
@@ -31,7 +52,7 @@ public class SoftwareGeometria {
                     + "[6] Paralelepipedo \n"
                     + "[7] Equação do segundo grau \n"
                     + "[8] Visualizar todos \n"
-                    + "[9] Sair \n"
+                    + "[9] Sair e salvar \n"
                     + "Opção: ");
             option = input.nextInt();
             
@@ -429,6 +450,7 @@ public class SoftwareGeometria {
                             
                         }       
                     }
+                    break;
                 } // fim case 5
                 case 6:{ // case 6
                     int option_paralelepipedo = 0;
@@ -493,10 +515,11 @@ public class SoftwareGeometria {
                             }
                         }
                     }
+                    break;
                 } // fim case6
                 case 7:{ //case 7
                     int option_equacaosegundograu = 0;
-                    while(option_equacaosegundograu != 5){
+                    while(option_equacaosegundograu != 6){
                         System.out.print("\n O que deseja fazer com a classe Equação segundo grau ?\n"
                                 + "[1] Criar uma nova Equação do segundo grau \n"
                                 + "[2] Visualizar a bhaskara \n"
@@ -508,47 +531,59 @@ public class SoftwareGeometria {
                         option_equacaosegundograu = input.nextInt();
                         switch(option_equacaosegundograu){
                             case 1:{
-                                System.out.print("\n Digite o valor de A: ");
+                                    System.out.print("\n Digite o valor de A: ");
                                 int valorA = input.nextInt();
-                                System.out.print("\n Digite o valor de B: ");
+                                    System.out.print("\n Digite o valor de B: ");
                                 int valorB = input.nextInt();
-                                System.out.print("\n Digite o valor de C: ");
+                                    System.out.print("\n Digite o valor de C: ");
                                 int valorC = input.nextInt();
-                            EquacaoSegundoGrau eqsegrau = new EquacaoSegundoGrau(valorA, valorB, valorC);
-                                objetos_equacaosegundograu.add(eqsegrau);
-                            break;
+                                    array_de_objetos.add(new EquacaoSegundoGrau(valorA, valorB, valorC));
+                                break;
                             }
                             case 2:{
-                                System.out.println("\n Os deltas das equações de segundo grau criadas é: ");
-                                for(int i=0; i < objetos_equacaosegundograu.size(); i++){
-                                    System.out.println(objetos_equacaosegundograu.get(i).retornaCalcbhaskara());
-                                    System.out.println("\n ---- \n ");
+                                System.out.println("\n As bhaskaras das equações de segundo grau criadas são: ");
+                                for(int i=0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof EquacaoSegundoGrau){
+                                        EquacaoSegundoGrau esg = (EquacaoSegundoGrau)array_de_objetos.get(i);
+                                        System.out.println(esg.retornaCalcbhaskara());
+                                        System.out.println("\n ---- \n ");
+                                    }
                                 
                                 }
-                            break;
+                                break;
                             }
                             case 3:{
-                                System.out.println("\n Os X um das equações de segundo grau criadas é: ");
-                                for(int i=0; i < objetos_equacaosegundograu.size(); i++){
-                                    System.out.println(objetos_equacaosegundograu.get(i).retornaCalcXum());
-                                    System.out.println("\n ---- \n ");
+                                System.out.println("\n Os X um das equações de segundo grau criadas são: ");
+                                for(int i=0; i < array_de_objetos.size(); i++){
+                                    if (array_de_objetos.get(i) instanceof EquacaoSegundoGrau) {
+                                        EquacaoSegundoGrau esg = (EquacaoSegundoGrau)array_de_objetos.get(i);
+                                        System.out.println(esg.retornaCalcXum());
+                                        System.out.println("\n ---- \n ");
+                                    }
                                 }
-                            break;
+                                break;
                             }
                             case 4:{
-                                System.out.println("\n Os X dois das equações de segundo grau criadas é: ");
-                                for(int i = 0; i < objetos_equacaosegundograu.size(); i++ ){
-                                System.out.println(objetos_equacaosegundograu.get(i).retornaCalcXdois());    
+                                System.out.println("\n Os X dois das equações de segundo grau criadas são: ");
+                                for(int i = 0; i < array_de_objetos.size(); i++ ){
+                                    if(array_de_objetos.get(i) instanceof EquacaoSegundoGrau){
+                                        EquacaoSegundoGrau esg = (EquacaoSegundoGrau)array_de_objetos.get(i);
+                                        System.out.println(esg.retornaCalcXdois());
+                                        System.out.println("\n ---- \n ");  
+                                    }
                                 }
-                            break;    
+                                break;    
                             }
                             case 5:{
                                 System.out.println("\n Todas as informações das equações do segundo grau são: ");
-                                for(int i=0; i < objetos_equacaosegundograu.size(); i++){
-                                    System.out.println(objetos_equacaosegundograu.get(i).toString());
-                                    System.out.println("\n ---- \n ");
+                                for(int i=0; i < array_de_objetos.size(); i++){
+                                    if(array_de_objetos.get(i) instanceof EquacaoSegundoGrau){
+                                        EquacaoSegundoGrau esg = (EquacaoSegundoGrau)array_de_objetos.get(i);
+                                        System.out.println(esg.toString());
+                                        System.out.println("\n ---- \n ");
+                                    }
                                 }
-                            break;
+                                break;
                             }
                             case 6:{
                                 try{
@@ -559,6 +594,7 @@ public class SoftwareGeometria {
                             }
                         }
                     }
+                    break;
                 } // fim case 7
                 case 8:{
                     for(int i = 0; i < array_de_objetos.size(); i++){
@@ -573,10 +609,23 @@ public class SoftwareGeometria {
                     switch(voltar){
                         case 0:{
                             try{
-                        System.out.println("Você saiu... ");
-                        Thread.sleep(750);
-                        }catch(Exception error){};
-                        break;
+                                FileOutputStream fos = new FileOutputStream("C:/temp/FigurasGeometricas.dat");
+                                ObjectOutputStream out = new ObjectOutputStream(fos);
+                                
+                                for(int i = 0; i < array_de_objetos.size(); i++){
+                                    out.writeObject(array_de_objetos.get(i));
+                                }
+                                
+                                out.close();
+                                fos.close();
+                                
+                            }catch(Exception e){};
+                            
+                            try{
+                                System.out.println("Você saiu... ");
+                                Thread.sleep(750);
+                            }catch(Exception error){};
+                            break;
                         }
                     }
                 }
