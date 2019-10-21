@@ -31,7 +31,9 @@ public class SoftwareGeometria {
                 try {
                     Object objeto = ois.readObject();
                     array_de_objetos.add(objeto);
-                    
+                    if(objeto instanceof Ponto){
+                        p = (Ponto)objeto;
+                    }
                 }catch (EOFException saida) { sair = true;}
             }while(!sair);
             
