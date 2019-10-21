@@ -1,6 +1,6 @@
 # Software Geometria
 
-###Projeto da materia Orientaçao á objetos com Java
+### Projeto da materia Orientaçao á objetos com Java
 
 
 ![menu](https://user-images.githubusercontent.com/45046288/67172421-aa087800-f391-11e9-9f79-4f634b9fb852.jpg)
@@ -34,7 +34,7 @@ E após inseridas, o software realiza calculos das principais propriedades de ca
 Quando o usuario sai do software, os objetos cadastrados são salvos em arquvo .dat para ser utilizado posteriormente
 Assim que o usuario entra novamente o sistema, as formas são carregadas e pode-se realizar a consulta de dados ou inserção de novas formas
 
-#Contribuidores
+# Contribuidores
 
-##Gustavo Santos Melo: https://github.com/GustavoSMelo
-##Mateus Passos Amaral: https://github.com/m3t3us
+## Gustavo Santos Melo: https://github.com/GustavoSMelo
+## Mateus Passos Amaral: https://github.com/m3t3us
