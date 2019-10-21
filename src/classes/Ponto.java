@@ -1,6 +1,8 @@
 package classes;
 
-public class Ponto {
+import java.io.Serializable;
+
+public class Ponto implements Serializable{
     protected float posicionamento_x;
     protected float posicionamento_y;
     

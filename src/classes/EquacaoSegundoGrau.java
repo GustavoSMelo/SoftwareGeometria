@@ -1,7 +1,9 @@
 
 package classes;
 
-public class EquacaoSegundoGrau implements Interface.EquacaoSegundoGrau {
+import java.io.Serializable;
+
+public class EquacaoSegundoGrau implements Interface.EquacaoSegundoGrau, Serializable {
     private int valorA, valorB, valorC;
 
     //Criando metodo construtor sem parâmetro

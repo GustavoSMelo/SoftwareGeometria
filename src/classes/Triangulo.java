@@ -1,6 +1,8 @@
 package classes;
 
-public final class Triangulo extends Ponto implements Interface.Triangulo{
+import java.io.Serializable;
+
+public final class Triangulo extends Ponto implements Interface.Triangulo, Serializable{
     private float base;
     private float altura;
     private float posX;

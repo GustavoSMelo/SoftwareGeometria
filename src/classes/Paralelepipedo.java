@@ -1,6 +1,8 @@
 package classes;
 
-public final class Paralelepipedo extends Ponto implements Interface.Paralelepipedo{
+import java.io.Serializable;
+
+public final class Paralelepipedo extends Ponto implements Interface.Paralelepipedo, Serializable{
     private float comprimento, altura, largura;
     private float posX, posY;
     public Paralelepipedo(){};

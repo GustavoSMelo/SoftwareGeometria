@@ -1,8 +1,9 @@
 package classes;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-public final class Cone extends Ponto implements Interface.Cone {
+public final class Cone extends Ponto implements Interface.Cone, Serializable {
 
     private float raio, altura, geratriz, posX, posY;
     
