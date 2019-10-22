@@ -3,7 +3,7 @@ package classes;
 
 import java.io.Serializable;
 
-public class Quadrado extends Ponto implements Interface.Quadrado, Serializable {
+public final class Quadrado extends Ponto implements Interface.Quadrado, Serializable {
 
     private float lado;
     private float posx;
