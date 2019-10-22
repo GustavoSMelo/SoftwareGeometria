@@ -2,7 +2,7 @@ package classes;
 
 import java.io.Serializable;
 
-public class Cilindro extends Ponto implements Interface.Cilindro, Serializable{
+public final class Cilindro extends Ponto implements Interface.Cilindro, Serializable{
     private float raio, altura;
    
     private float posX, posY;
