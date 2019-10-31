@@ -21,6 +21,11 @@ public class SoftwareGeometria {
         ArrayList array_de_objetos = new ArrayList();
         Ponto p = null;
         
+        System.out.println("Trabalho realizado por: Gustavo Santos Melo - 20644272\n"
+                + "Gustavo Ferreira Marinho - 20477023 \n"
+                + "Luis Eduardo - 21209375 \n"
+                + "Mateus Passos Amaral - 20999470 \n ");
+        
         try{
             FileInputStream fis = new FileInputStream("C:/temp/FigurasGeometricas.dat");
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -624,6 +629,10 @@ public class SoftwareGeometria {
                             }catch(Exception e){};
                             
                             try{
+                                System.out.println("Trabalho realizado por: Gustavo Santos Melo - 20644272\n"
+                + "Gustavo Ferreira Marinho - 20477023 \n"
+                + "Luis Eduardo - 21209375 \n"
+                + "Mateus Passos Amaral - 20999470 \n ");
                                 System.out.println("Você saiu... ");
                                 Thread.sleep(750);
                             }catch(Exception error){};
