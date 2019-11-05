@@ -544,7 +544,14 @@ public class SoftwareGeometria {
                                 int valorB = input.nextInt();
                                     System.out.print("\n Digite o valor de C: ");
                                 int valorC = input.nextInt();
-                                    array_de_objetos.add(new EquacaoSegundoGrau(valorA, valorB, valorC));
+                                float valores = (float) Math.pow(valorB, 2) - 4 * valorA * valorC;
+                                
+                                if(valores < 0){
+                                    System.out.println("Impossível continuar, pois o valor do delta é menor que zero.");
+                                }
+                                else{
+                                     array_de_objetos.add(new EquacaoSegundoGrau(valorA, valorB, valorC));
+                                }
                                 break;
                             }
                             case 2:{
