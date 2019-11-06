@@ -617,11 +617,7 @@ public class SoftwareGeometria {
                     break;
                 }
                 case 9:{
-                    int voltar = 0;
-                     System.out.println("digite 0 para sair: ");
-                     voltar = input.nextInt();
-                    switch(voltar){
-                        case 0:{
+               
                             try{
                                 FileOutputStream fos = new FileOutputStream("C:/temp/FigurasGeometricas.dat");
                                 ObjectOutputStream out = new ObjectOutputStream(fos);
@@ -646,8 +642,7 @@ public class SoftwareGeometria {
                             break;
                         }
                     }
-                }
-            }//switch option
+            
             
         }//while
         
