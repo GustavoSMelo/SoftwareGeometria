@@ -497,7 +497,7 @@ public class SoftwareGeometria {
                                 for(int i=0; i < array_de_objetos.size();i++){
                                     if(array_de_objetos.get(i) instanceof Paralelepipedo){
                                         Paralelepipedo para_tot = (Paralelepipedo)array_de_objetos.get(i);
-                                        System.out.println(para_tot.retornaVolume());
+                                        System.out.println(para_tot.retornaAreaTotal());
                                     }
                                     System.out.println("\n ---- \n ");
                                 }
