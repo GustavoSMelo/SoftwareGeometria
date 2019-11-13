@@ -27,7 +27,7 @@ public class SoftwareGeometria {
                 + "Mateus Passos Amaral - 20999470 \n ");
         
         try{
-            FileInputStream fis = new FileInputStream("C:/temp/FigurasGeometricas.dat");
+            FileInputStream fis = new FileInputStream("C:/Users/cliente/Desktop/FigurasGeometricas.dat");
             ObjectInputStream ois = new ObjectInputStream(fis);
             array_de_objetos.clear();
             
@@ -619,7 +619,7 @@ public class SoftwareGeometria {
                 case 9:{
                
                             try{
-                                FileOutputStream fos = new FileOutputStream("C:/temp/FigurasGeometricas.dat");
+                                FileOutputStream fos = new FileOutputStream("C:/Users/cliente/Desktop/FigurasGeometricas.dat");
                                 ObjectOutputStream out = new ObjectOutputStream(fos);
                                 
                                 for(int i = 0; i < array_de_objetos.size(); i++){
