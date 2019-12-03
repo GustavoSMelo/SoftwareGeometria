@@ -37,4 +37,4 @@ Assim que o usuario entra novamente o sistema, as formas são carregadas e pode-
 # Contribuidores
 
 ## Gustavo Santos Melo: https://github.com/GustavoSMelo
-## Mateus Passos Amaral: https://github.com/m3t3us
+## Mateus Passos Amaral: https://github.com/mateusamarall
